@@ -4,12 +4,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     //LESS to CSS
     less: {
-      options: {
-        cleancss: true,
-        optimization: 2
-      },
-      files: {
-        'css/styles.min.css': ['less/*.less']
+      development: {
+        options: {
+          cleancss: true,
+          optimization: 2
+        },
+        files: {
+          'css/styles.min.css': ['less/styles.less']
+        }
       }
      },
     //Uglify
