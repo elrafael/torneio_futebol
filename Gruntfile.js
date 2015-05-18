@@ -37,13 +37,16 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'js/vendor/*.js',
+          'js/vendor/angular.min.js',
+          'js/vendor/angular-*.js',
+          'js/vendor/jquery*.js',
+          'js/vendor/bootstrap*.js',
           'js/app.js',
           'js/routes.js',
-          'js/directives/*.js',
-          'js/services/*.js',
-          'js/controllers/*.js',
-          'js/filters/*.js',
+          //'js/directives/*.js',
+          //'js/services/*.js',
+          //'js/controllers/*.js',
+          //'js/filters/*.js',
           'js/src/scripts.js'
         ],
         dest: 'js/scripts.js'
