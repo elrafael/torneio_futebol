@@ -43,10 +43,10 @@ module.exports = function(grunt) {
           'js/vendor/bootstrap*.js',
           'js/app.js',
           'js/routes.js',
-          //'js/directives/*.js',
-          //'js/services/*.js',
-          //'js/controllers/*.js',
-          //'js/filters/*.js',
+          'js/directives/*.js',
+          'js/services/*.js',
+          'js/controllers/*.js',
+          'js/filters/*.js',
           'js/src/scripts.js'
         ],
         dest: 'js/scripts.js'
