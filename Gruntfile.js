@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         optimization: 2
       },
       files: {
-        'css/styles.min.css': ['src/less/*.less']
+        'css/styles.min.css': ['less/*.less']
       }
      },
     //Uglify
@@ -35,37 +35,25 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'src/js/Tocca.min.js',
-          'src/js/Utils.js',
-          'src/js/Maps.js',
-          'src/js/Routes.js',
-          'src/js/scripts.js'
+          'js/vendor/*.js',
+          'js/app.js',
+          'js/routes.js',
+          'js/directives/*.js',
+          'js/services/*.js',
+          'js/controllers/*.js',
+          'js/filters/*.js',
+          'js/scripts.js'
         ],
         dest: 'js/scripts.js'
       }
-    },
-    shell: {
-      build_docs: {
-        command: 'jsdoc src/js/ -d docs/'
-      }
-    },
-    //Watch and LiveReload
-    watch : {
-      options: {
-        livereload: true
-      },
-      files: ['src/js/*', 'src/less/*', 'Gruntfile.js', 'index.html'],
-      tasks: ['less', 'concat', 'shell']
     }
   });
 
   // carrega plugins
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('default', ['less', 'concat', 'uglify', 'watch']);
-  grunt.registerTask('server', ['less', 'concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['less', 'concat', 'uglify']);
+  grunt.registerTask('server', ['less', 'concat', 'uglify']);
 };
