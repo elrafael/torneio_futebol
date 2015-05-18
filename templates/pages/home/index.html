@@ -4,14 +4,26 @@
 
 
   <form>
-    <input type="text" name="player" ng-model="searchPlayer"/>
-    <input type="submit" value="Submit"/>
+    <div class="col-lg-5">
+    <input type="search" name="player" ng-model="searchPlayer" class="form-control" >
+    </div>
+    <div class="clearfix"></div>
   </form>
-  <div ng-repeat="p in players |filter: searchPlayer">
-    <p>{{p.name}} - {{p.age}}</p>
-  </div>
-
-
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="p in players |filter: searchPlayer">
+        <td><a href="#/player/{{p.name}}">{{p.name}}</a></td>
+        <td>{{p.age}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <p><a class="btn btn-primary btn-lg" href="#/games">Competições</a></p>

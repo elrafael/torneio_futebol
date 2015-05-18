@@ -1,4 +1,4 @@
-angular.module('Torneio').controller('HomeController', function($scope){
+angular.module('Torneio').controller('HomeController', function($scope, Players){
     $scope.players = [
         {
             name: 'Um',
