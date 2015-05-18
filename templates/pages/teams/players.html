@@ -1,0 +1,20 @@
+<section class="teams-players container">
+	
+	<div class="page-header">
+		<img width="50" ng-src="{{teamImage}}" alt="{{team}}">
+		<h1>{{team}}</h1>
+	</div>
+
+	<div class="row players">
+		
+		<div class="col-sm-4" ng-repeat="player in players | orderBy : 'jerseyNumber' ">
+			<p class="number">{{player.jerseyNumber}}</p>
+			<h4>{{player.name}}</h4>
+			<p>{{player.position}}</p>
+			<p>{{player.marketValue}}</p>
+		</div>
+
+	</div>
+
+
+</section>

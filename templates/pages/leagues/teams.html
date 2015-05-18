@@ -1,0 +1,21 @@
+<section class="seasons-teams container">
+	<page-header title="{{league}}" fallback="Equipas"></page-header>
+
+	<div class="row">
+		
+		<div class="col-md-3" ng-repeat="team in teams">
+			<div class="thumbnail">
+				<img ng-src="{{team.crestUrl}}" alt="{{team.name}}">
+				<div class="caption">
+					<h4>{{ team.name }}</h4>
+					<p>{{ team.squadMarketValue }}</p>
+					<p>
+						<a ng-href="#/teams/{{team._links.self.href | teamIdFilter}}/players" class="btn btn-primary" role="button">Jogadores</a>
+						<a ng-href="#/teams/{{team._links.self.href | teamIdFilter}}/games" class="btn btn-default" role="button">Jogos</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>

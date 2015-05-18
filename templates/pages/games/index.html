@@ -1,0 +1,30 @@
+<section class="games container">
+	
+	<div class="page-header">
+		<h1>Jogos <small>{{date | date : 'longDate'}}</small></h1>
+	</div>
+
+	<div class="row space-bottom">
+		<div class="col-sm-12">
+			<button class="btn btn-default pull-left" ng-click="setPreviousDay()">Anterior</button>
+			<button class="btn btn-default pull-right" ng-click="setNextDay()">Seguinte</button>
+		</div>
+	</div>
+
+	<div class="row list-group fixtures">
+		
+		<div class="col-sm-4" ng-repeat="fixture in fixtures">
+			<div class="text-center list-group-item">
+				<h4>{{fixture.homeTeamName}}</h4>
+				<p><span class="badge">{{fixture.result.goalsHomeTeam}}</span></p>
+				<p>vs</p>
+				<h4>{{fixture.awayTeamName}}</h4>
+				<p><span class="badge">{{fixture.result.goalsAwayTeam}}</span></p>
+				<p>{{fixture.date | date : 'medium'}}</p>
+			</div>
+		</div>
+
+	</div>
+
+
+</section>

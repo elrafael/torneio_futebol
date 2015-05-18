@@ -1,0 +1,11 @@
+<section>
+	<page-header title="Competições"></page-header>
+
+	<div class="list-group">
+		<a class="list-group-item" ng-repeat="league in leagues" ng-href="#/leagues/{{league._links.self.href | seasonIdFilter}}" ng-click="setLeagueName(league.caption)">
+			<h2>{{league.caption}}</h2>
+			<p>{{league.numberOfTeams}} Equipas</p>
+		</a>
+	</div>
+
+</section>
