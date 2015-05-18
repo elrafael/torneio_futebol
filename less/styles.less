@@ -1,15 +1,19 @@
 @import "less/bootstrap.less";
-html { font-size: 16px; }
 body {
+    font-size: 16px; font-family: 'Open Sans', sans-serif;
     footer {
         text-align: center;
-        //@media (min-width: 768px){
-            .navbar-nav{
-                margin: 0 auto;
-                display: table;
-                table-layout: fixed;
-                float: none;
-            }
-        //}
+        .navbar .nav,
+        .navbar .nav > li {
+            float: none;
+            display: inline-block;
+            *display: inline; /* ie7 fix */
+            *zoom: 1; /* hasLayout ie7 trigger */
+            vertical-align: top;
+        }
+        
+        .navbar-collapse {
+            text-align: center;
+        }
     }
 }
