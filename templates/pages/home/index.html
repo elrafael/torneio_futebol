@@ -2,4 +2,16 @@
   <h1>Home</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non facilis alias deleniti consequuntur vero vel rem eveniet animi minus et nisi ipsam dolorum molestias accusamus nulla blanditiis, qui similique placeat? Nisi officiis nulla quibusdam, quam amet illum distinctio corporis, deleniti reiciendis labore aliquid officia omnis, placeat illo iusto? Provident, iure?</p>
 
+
+  <form>
+    <input type="text" name="player" ng-model="searchPlayer"/>
+    <input type="submit" value="Submit"/>
+  </form>
+  <div ng-repeat="p in players |filter: searchPlayer">
+    <p>{{p.name}} - {{p.age}}</p>
+  </div>
+
+
+
+
   <p><a class="btn btn-primary btn-lg" href="#/games">Competições</a></p>
