@@ -1,4 +1,4 @@
-angular.module('Elifoot').config( ['$routeProvider', function($routeProvider){
+angular.module('Torneio').config( ['$routeProvider', function($routeProvider){
 
 	$routeProvider
 		.when('/', { 

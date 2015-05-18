@@ -1,1 +1,1 @@
-angular.module('Elifoot', ['ngRoute', 'ngAnimate']);
+angular.module('Torneio', ['ngRoute', 'ngAnimate']);
