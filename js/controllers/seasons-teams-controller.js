@@ -1,4 +1,4 @@
-angular.module('Elifoot').controller('SeasonsTeamsController', function($scope, $routeParams, Seasons){
+angular.module('Torneio').controller('SeasonsTeamsController', function($scope, $routeParams, Seasons){
 
 	$scope.teams = [];
 	$scope.league = Seasons.getLeagueName();

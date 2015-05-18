@@ -1,4 +1,4 @@
-angular.module('Elifoot').factory('Seasons', function SeasonsFactory($http){
+angular.module('Torneio').factory('Seasons', function SeasonsFactory($http){
 
 	return {
 

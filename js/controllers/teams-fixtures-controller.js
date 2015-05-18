@@ -1,4 +1,4 @@
-angular.module('Elifoot').controller('TeamsFixturesController', function($scope, $routeParams, Fixtures, Teams){
+angular.module('Torneio').controller('TeamsFixturesController', function($scope, $routeParams, Fixtures, Teams){
 
 	$scope.fixtures = [];
 	$scope.team = '';

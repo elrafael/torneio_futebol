@@ -1,4 +1,4 @@
-angular.module('Elifoot').factory('Fixtures', function FixturesFactory($http){
+angular.module('Torneio').factory('Fixtures', function FixturesFactory($http){
 
 	return {
 

@@ -1,4 +1,4 @@
-angular.module('Elifoot').directive('pageHeader', function(){
+angular.module('Torneio').directive('pageHeader', function(){
 
 	return {
 		restrict: 'E',

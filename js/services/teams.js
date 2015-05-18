@@ -1,4 +1,4 @@
-angular.module('Elifoot').factory('Teams', function TeamsFactory($http){
+angular.module('Torneio').factory('Teams', function TeamsFactory($http){
 
 	return {
 

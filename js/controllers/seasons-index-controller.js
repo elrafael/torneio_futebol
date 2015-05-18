@@ -1,4 +1,4 @@
-angular.module('Elifoot').controller('SeasonsIndexController', function($scope, Seasons){
+angular.module('Torneio').controller('SeasonsIndexController', function($scope, Seasons){
 
 	$scope.leagues = [];
 

@@ -1,4 +1,4 @@
-angular.module('Elifoot').controller('FixturesIndexController', function($scope, Fixtures){
+angular.module('Torneio').controller('FixturesIndexController', function($scope, Fixtures){
 
 	$scope.fixtures = [];
 	$scope.date = new Date();

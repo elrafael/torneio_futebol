@@ -345,6 +345,250 @@ angular.module('Torneio').config( ['$routeProvider', function($routeProvider){
 		});
 
 }]);
+angular.module('Torneio').directive('pageHeader', function(){
+
+	return {
+		restrict: 'E',
+		templateUrl: 'templates/directives/page-header.html',
+		link: function(scope, element, attrs){
+			scope.title = attrs.title || attrs.fallback;
+		}
+	}
+
+});
+angular.module('Torneio').factory('Fixtures', function FixturesFactory($http){
+
+	return {
+
+		all: function(){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/fixtures/',
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		},
+
+		getFixturesForDate: function(date){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/fixtures/?timeFrameStart=' + date + '&timeFrameEnd=' + date,
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		},
+
+		getFixturesForTeam: function(team){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/teams/' + team + '/fixtures',
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		}
+
+	};
+
+});
+angular.module('Torneio').factory('Players', function PlayersFactory($http){
+    
+});
+angular.module('Torneio').factory('Seasons', function SeasonsFactory($http){
+
+	return {
+
+		data: {
+			leagueName: null
+		},
+
+		getLeagueName: function(){
+			return this.data.leagueName;
+		},
+
+		setLeagueName: function(leagueName){
+			this.data.leagueName = leagueName;
+		},
+
+		all: function(){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/soccerseasons/',
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		},
+
+		getTeamsForSeason: function(season){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/soccerseasons/' + season + '/teams',
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		}
+
+	};
+
+});
+angular.module('Torneio').factory('Teams', function TeamsFactory($http){
+
+	return {
+
+		getTeam: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/teams/' + id,
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		},
+
+		getPlayersForTeam: function(team){
+			return $http({
+				method: 'GET',
+				url: 'http://api.football-data.org/alpha/teams/' + team + '/players',
+				headers: {
+					'X-Auth-Token': '0f504a9a603c4d98bc935bc9428ea4fe'
+				}
+			});
+		}
+
+	};
+
+});
+angular.module('Torneio').controller('FixturesIndexController', function($scope, Fixtures){
+
+	$scope.fixtures = [];
+	$scope.date = new Date();
+
+	$scope.setPreviousDay = function(){
+		$scope.date.setDate( $scope.date.getDate() - 1 );
+		$scope.callData();
+	};
+
+	$scope.setNextDay = function(){
+		$scope.date.setDate( $scope.date.getDate() + 1 );
+		$scope.callData();
+	};
+
+	$scope.formatDate = function(){
+
+		var month = $scope.date.getMonth() + 1;
+		if(month < 10) month = '0' + month;
+
+		var day = $scope.date.getDate();
+		if(day < 10) day = '0' + day;
+
+		return $scope.date.getFullYear() + '-' + month + '-' + day;
+
+	};
+
+	$scope.callData = function(){
+		Fixtures.getFixturesForDate( $scope.formatDate() ).success(function(data){
+			$scope.fixtures = data.fixtures;
+			console.log(data.fixtures);
+		});
+	};
+
+	$scope.callData();
+
+});
+angular.module('Torneio').controller('SeasonsIndexController', function($scope, Seasons){
+
+	$scope.leagues = [];
+
+	$scope.setLeagueName = function(leagueName){
+		Seasons.setLeagueName(leagueName);
+	};
+
+	Seasons.all().success(function(data){
+		$scope.leagues = data;
+		console.log($scope.leagues);
+	});
+
+});
+angular.module('Torneio').controller('SeasonsTeamsController', function($scope, $routeParams, Seasons){
+
+	$scope.teams = [];
+	$scope.league = Seasons.getLeagueName();
+
+	Seasons.getTeamsForSeason($routeParams.id).success(function(data){
+		$scope.teams = data.teams;
+		console.log($scope.teams);
+	});
+
+});
+angular.module('Torneio').controller('TeamsFixturesController', function($scope, $routeParams, Fixtures, Teams){
+
+	$scope.fixtures = [];
+	$scope.team = '';
+	$scope.teamImage = '';
+
+	Teams.getTeam($routeParams.id).success(function(data){
+		$scope.team = data.name;
+		$scope.teamImage = data.crestUrl;
+	});
+
+	Fixtures.getFixturesForTeam($routeParams.id).success(function(data){
+		$scope.fixtures = data.fixtures;
+
+		for (var i = 0; i < $scope.fixtures.length; i++) {
+
+			var result = $scope.fixtures[i].result;
+			var home = $scope.fixtures[i].homeTeamName;
+			var away = $scope.fixtures[i].awayTeamName;
+
+			var isHome = (home === $scope.team);
+			var diff = result.goalsHomeTeam - result.goalsAwayTeam;
+
+			if(diff === 0){
+				$scope.fixtures[i].matchResult = "draw";
+			}else if((diff > 0 && isHome) || (diff < 0 && !isHome)){
+				$scope.fixtures[i].matchResult = "win";
+			}else{
+				$scope.fixtures[i].matchResult = "lose";
+			}
+
+		};
+	});
+
+});
+angular.module('Torneio').controller('TeamsPlayersController', function($scope, $routeParams, Teams){
+
+	$scope.players = [];
+	$scope.team = '';
+	$scope.teamImage = '';
+
+	Teams.getTeam($routeParams.id).success(function(data){
+		$scope.team = data.name;
+		$scope.teamImage = data.crestUrl;
+	});
+
+	Teams.getPlayersForTeam($routeParams.id).success(function(data){
+		$scope.players = data.players;
+	});
+
+});
+angular.module('Torneio').filter('seasonIdFilter', function(){
+
+	return function(url){
+		return url.slice(-3);
+	};
+
+});
+angular.module('Torneio').filter('teamIdFilter', function(){
+
+	return function(url){
+		return url.slice( (url.lastIndexOf('/') + 1) - url.length );
+	};
+
+});
 $(document).ready(function(){
     //alert('hi');
 });
