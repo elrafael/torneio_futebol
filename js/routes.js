@@ -6,7 +6,8 @@ angular.module('Torneio').config( ['$routeProvider', function($routeProvider){
 		})
 
 		.when('/home', {
-			templateUrl: 'templates/pages/home/index.html'
+			templateUrl: 'templates/pages/home/index.html',
+			controller: 'HomeController'
 		})
 
 		.when('/leagues', {

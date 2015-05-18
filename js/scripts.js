@@ -308,7 +308,8 @@ angular.module('Torneio').config( ['$routeProvider', function($routeProvider){
 		})
 
 		.when('/home', {
-			templateUrl: 'templates/pages/home/index.html'
+			templateUrl: 'templates/pages/home/index.html',
+			controller: 'HomeController'
 		})
 
 		.when('/leagues', {
@@ -395,6 +396,9 @@ angular.module('Torneio').factory('Fixtures', function FixturesFactory($http){
 });
 angular.module('Torneio').factory('Players', function PlayersFactory($http){
     
+    return {
+        //
+    }
 });
 angular.module('Torneio').factory('Seasons', function SeasonsFactory($http){
 
@@ -498,6 +502,9 @@ angular.module('Torneio').controller('FixturesIndexController', function($scope,
 
 	$scope.callData();
 
+});
+angular.module('Torneio').controller('HomeController', function($scope){
+    $scope.date = new Date();
 });
 angular.module('Torneio').controller('SeasonsIndexController', function($scope, Seasons){
 
