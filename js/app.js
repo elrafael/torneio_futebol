@@ -1,1 +1,0 @@
-angular.module('Torneio', ['ngRoute', 'ngAnimate']);
