@@ -1,11 +1,14 @@
 <div class="row">
-  <div class="col-3" *ngFor="let league of leagues; let i = index">
+  <div class="col-3" *ngFor="let league of leagues">
     <div class="card" style="margin-bottom: 10px;">
-      <img src="..." class="card-img-top" alt="...">
+      <img src="{{league.emblemUrl || 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg'}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{league.name}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">ID: {{league.id}}</a>
+        <p class="card-text">
+          Start Date: {{league.currentSeason.startDate}}<br />
+          End Date: {{league.currentSeason.endDate}}
+        </p>
+        <a routerLink="/matches/{{league.id}}" class="btn btn-primary">ID {{league.id}}</a>
       </div>
     </div>
   </div>
