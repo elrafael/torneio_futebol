@@ -5,4 +5,13 @@ export interface Competitions {
   emblemUrl?: string;
   plan?: string;
   competitions?: {};
+  currentSeason?: CurrentSeason;
+}
+
+interface CurrentSeason {
+  id: number;
+  startDate: string;
+  endDate: string;
+  currentMatchday: number;
+  winner: string;
 }
