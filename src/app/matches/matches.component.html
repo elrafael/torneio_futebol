@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <table class="table table-light table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Home</th>
+        <th scope="col">Away</th>
+        <th scope="col">Winner</th>
+        <th scope="col">Status</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of matches.matches">
+        <td>{{match.homeTeam.name}}</td>
+        <td>{{match.awayTeam.name}}</td>
+        <td>{{match.score.winner}}</td>
+        <td>{{match.status}}</td>
+        <td>
+          <!-- Button trigger modal -->
+          <a href="#exampleModal{{match.id}}" class="btn btn-primary" data-bs-toggle="modal">
+            More details
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal{{match.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{match.id}}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Match {{match.season.currentMatchday}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Scores</p>
+                  <p>{{match.homeTeam.name}} {{match.score.fullTime.homeTeam}} x {{match.score.fullTime.awayTeam}} {{match.awayTeam.name}}</p>
+                  <p>&nbsp;</p>
+                  <p>Referees</p>
+                  <div *ngFor="let refer of match.referees">
+                    <p>{{refer.name}} - {{refer.role}}</p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
