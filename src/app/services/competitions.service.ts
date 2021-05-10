@@ -18,10 +18,18 @@ export class CompetitionsService {
   }
 
   public getAll(): Observable<Competitions> {
-    return this.http.get<Competitions>(`${this.url}` );
+    return this.http.get<Competitions>(this.url);
   }
 
-  public getById(id: number) {
-    return this.http.get<Competitions>(`${this.url}${id}` );
+  public getChampionsLeage(): Observable<Competitions> {
+    return this.http.get(`${this.url}CL`);
+  }
+
+  public getPrimeiraLiga(): Observable<Competitions> {
+    return this.http.get<Competitions>(`${this.url}PPL`);
+  }
+
+  public getByCompetition(competition: string) {
+    return this.http.get<Competitions>(`${this.url}${competition}` );
   }
 }
