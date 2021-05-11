@@ -9,7 +9,7 @@ import { MatchesService } from '../services/matches.service';
 })
 export class MatchesComponent implements OnInit {
 
-  matches: any;
+  public matches: any;
 
   constructor(private matchesService: MatchesService, private activatedRoute: ActivatedRoute) { }
 
@@ -20,7 +20,6 @@ export class MatchesComponent implements OnInit {
       console.log(data);
       this.matches = data;
     })
-
   }
 
 }
