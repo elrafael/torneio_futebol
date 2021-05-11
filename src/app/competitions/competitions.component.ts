@@ -11,6 +11,7 @@ import { CompetitionsService } from '../services/competitions.service';
 export class CompetitionsComponent implements OnInit {
 
   public leagues: Competitions[];
+  public errorMessage: string = '';
 
   constructor(private competitionsService: CompetitionsService) { }
 
@@ -18,15 +19,18 @@ export class CompetitionsComponent implements OnInit {
     this.getAll();
   }
 
-  getAll() {
+  getAll(): void {
     const joined = forkJoin([
       this.competitionsService.getByCompetition('CL'),
       this.competitionsService.getByCompetition('PPL'),
-      this.competitionsService.getByCompetition('PL')
+      this.competitionsService.getByCompetition('PL'),
+      this.competitionsService.getByCompetition('BSA')
     ]);
 
     joined.subscribe( (data: Competitions[]) => {
       this.leagues = data;
+    }, (error) => {
+      this.errorMessage = error.error.message;
     })
   }
 
