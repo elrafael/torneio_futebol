@@ -1,1 +1,12 @@
-<p>teams works!</p>
+<div class="row bg-white" *ngIf="team">
+  <div class="col-4">
+    <h3>{{team.name}}</h3>
+    <p>{{team.tla}} {{team.shortName}}</p>
+    <img src="{{team.crestUrl}}" alt="">
+  </div>
+  <div class="col-8">
+    <div *ngFor="let player of team.squad">
+      <p>{{player.name}} - {{player.position}} - {{player.nationality}}</p>
+    </div>
+  </div>
+</div>
