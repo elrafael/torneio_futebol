@@ -11,25 +11,24 @@ import { Competitions } from '../interfaces/competitions';
 export class CompetitionsService {
 
   private url: string;
-  private headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.apiUrl}competitions/`;
   }
 
   public getAll(): Observable<Competitions> {
-    return this.http.get<Competitions>(this.url);
-  }
-
-  public getChampionsLeage(): Observable<Competitions> {
-    return this.http.get(`${this.url}CL`);
-  }
-
-  public getPrimeiraLiga(): Observable<Competitions> {
-    return this.http.get<Competitions>(`${this.url}PPL`);
+    return this.http.get<Competitions>(this.url).pipe(map( (data: Competitions) => {
+      const leagueCode = data.code.toLowerCase();
+      data.emblemUrl = `${leagueCode}.png`;
+      return data;
+    }));
   }
 
   public getByCompetition(competition: string) {
-    return this.http.get<Competitions>(`${this.url}${competition}` );
+    return this.http.get<Competitions>(`${this.url}${competition}` ).pipe(map( (data: Competitions) => {
+      const leagueCode = data.code.toLowerCase();
+      data.emblemUrl = `${leagueCode}.png`;
+      return data;
+    }));
   }
 }
