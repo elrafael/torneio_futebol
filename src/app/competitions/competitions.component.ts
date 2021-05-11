@@ -11,9 +11,6 @@ import { CompetitionsService } from '../services/competitions.service';
 export class CompetitionsComponent implements OnInit {
 
   public leagues: Competitions[];
-  public championsLeague: Competitions;
-  public primeiraLiga: Competitions;
-  public premierLeague: Competitions;
 
   constructor(private competitionsService: CompetitionsService) { }
 
@@ -28,7 +25,7 @@ export class CompetitionsComponent implements OnInit {
       this.competitionsService.getByCompetition('PL')
     ]);
 
-    joined.subscribe( (data) => {
+    joined.subscribe( (data: Competitions[]) => {
       this.leagues = data;
     })
   }
