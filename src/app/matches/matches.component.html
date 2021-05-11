@@ -10,7 +10,7 @@
     <tbody>
       <tr *ngFor="let match of matches.matches">
         <td>
-          <span [ngClass]="match.score.winner == 'HOME_TEAM' ? 'winner' : ''" >{{match.homeTeam.name}} {{match.score.fullTime.homeTeam}}</span> : <span [ngClass]="match.score.winner == 'AWAY_TEAM' ? 'winner' : ''" >{{match.score.fullTime.awayTeam}} {{match.awayTeam.name}}</span></td>
+          <a routerLink="/teams/{{match.homeTeam.id}}"><span [ngClass]="match.score.winner == 'HOME_TEAM' ? 'winner' : ''" >{{match.homeTeam.name}} {{match.score.fullTime.homeTeam}}</span></a> : <a routerLink="/teams/{{match.awayTeam.id}}"><span [ngClass]="match.score.winner == 'AWAY_TEAM' ? 'winner' : ''" >{{match.score.fullTime.awayTeam}} {{match.awayTeam.name}}</span></a></td>
         <td>{{match.status}}</td>
         <td>
           <!-- Button trigger modal -->
