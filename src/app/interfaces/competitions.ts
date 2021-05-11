@@ -1,5 +1,8 @@
+import { Area } from "./area";
+
 export interface Competitions {
   id?: number;
+  area?: Area;
   name?: string;
   code?: string;
   emblemUrl?: string;
