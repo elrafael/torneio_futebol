@@ -11,6 +11,7 @@ import { TeamsService } from '../services/teams.service';
 export class TeamsComponent implements OnInit {
 
   public team: Team;
+  public errorMessage: string = '';
 
   constructor(private teamsService: TeamsService, private activatedRoute: ActivatedRoute) { }
 
@@ -25,6 +26,8 @@ export class TeamsComponent implements OnInit {
     team.subscribe( (data) => {
       this.team = data;
       console.log(data);
+    }, (error) => {
+      this.errorMessage = error.error.message;
     });
   }
 
