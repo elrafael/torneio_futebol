@@ -10,6 +10,7 @@ import { MatchesService } from '../services/matches.service';
 export class MatchesComponent implements OnInit {
 
   public matches: any;
+  public errorMessage: string = '';
 
   constructor(private matchesService: MatchesService, private activatedRoute: ActivatedRoute) { }
 
@@ -17,8 +18,10 @@ export class MatchesComponent implements OnInit {
     const match = this.activatedRoute.snapshot.paramMap.get('competition');
     const matches = this.matchesService.getMatches(match);
     matches.subscribe( (data) => {
-      console.log(data);
+      // console.log(data);
       this.matches = data;
+    }, (error) => {
+      this.errorMessage = error.error.message;
     })
   }
 
