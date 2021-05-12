@@ -33,7 +33,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styles",
+                "src/styles/styles",
                 "./node_modules/bootstrap/scss"
               ]
             },
