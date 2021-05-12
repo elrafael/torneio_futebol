@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-3" *ngFor="let league of leagues">
     <div class="card">
-      <img src="./assets/images/logos_competitions/{{league.emblemUrl}}" class="card-img-top img-fluid" alt="{{league.name}}">
+      <a routerLink="/matches/{{league.id}}"><img src="./assets/images/logos_competitions/{{league.emblemUrl}}" class="card-img-top img-fluid" alt="{{league.name}}"></a>
       <div class="card-body">
         <h5 class="card-title">{{league.name}}</h5>
         <p class="card-text">
