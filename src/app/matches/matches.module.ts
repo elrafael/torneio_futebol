@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { MatchesRoutingModule } from './matches-routing.module';
 import { MatchesComponent } from './matches.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
-  declarations: [MatchesComponent],
+  declarations: [MatchesComponent, DetailsComponent],
   imports: [
     CommonModule,
     MatchesRoutingModule
