@@ -3,45 +3,21 @@
   <table class="table table-light table-striped">
     <thead>
       <tr>
-        <th scope="col">Teams</th>
+        <th scope="col" colspan="4">&nbsp;</th>
         <th scope="col">Status</th>
         <th scope="col">&nbsp;</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let match of matches.matches">
-        <td>
-          <a routerLink="/teams/{{match.homeTeam.id}}" [ngClass]="match.score.winner == 'HOME_TEAM' ? 'winner' : ''">{{match.homeTeam.name}} {{match.score.fullTime.homeTeam}}</a> :
-          <a routerLink="/teams/{{match.awayTeam.id}}" [ngClass]="match.score.winner == 'AWAY_TEAM' ? 'winner' : ''">{{match.score.fullTime.awayTeam}} {{match.awayTeam.name}}</a>
-        </td>
-        <td>{{match.status}}</td>
+      <tr *ngFor="let match of matches">
+        <td style="text-align: right; width: 30%;"><a routerLink="/teams/{{match.homeTeam.id}}" [ngClass]="match.score.winner == 'HOME_TEAM' ? 'winner' : ''">{{match.homeTeam.name}}</a></td>
+        <td>{{match.score.fullTime.homeTeam}}</td>
+        <td>{{match.score.fullTime.awayTeam}}</td>
+        <td><a routerLink="/teams/{{match.awayTeam.id}}" [ngClass]="match.score.winner == 'AWAY_TEAM' ? 'winner' : ''">{{match.awayTeam.name}}</a></td>
+        <td><span class="badge rounded-pill bg-primary">{{match.status}}</span></td>
         <td>
           <!-- Button trigger modal -->
-          <a href="#exampleModal{{match.id}}" class="btn btn-primary" data-bs-toggle="modal">
-            More details
-          </a>
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal{{match.id}}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Match {{match.season.currentMatchday}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p>Referees</p>
-                  <div *ngFor="let refer of match.referees">
-                    <p>{{refer.name}} - {{refer.role}}</p>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a routerLink="/matches/details/{{match.id}}" class="btn btn-primary" data-bs-toggle="modal">Match details</a>
         </td>
       </tr>
     </tbody>
