@@ -9,4 +9,5 @@ export interface Player {
   position: string;
   shirtNumber: number;
   lastUpdated: string;
+  role?: string;
 }
