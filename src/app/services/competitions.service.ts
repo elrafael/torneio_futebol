@@ -31,4 +31,8 @@ export class CompetitionsService {
       return data;
     }));
   }
+
+  public getStandings(competition: number) {
+    return this.http.get(`${this.url}${competition}/standings?standingType=TOTAL`);
+  }
 }
