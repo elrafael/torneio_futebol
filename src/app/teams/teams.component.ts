@@ -25,7 +25,6 @@ export class TeamsComponent implements OnInit {
 
     team.subscribe( (data) => {
       this.team = data;
-      console.log(data);
     }, (error) => {
       this.errorMessage = error.error.message;
     });

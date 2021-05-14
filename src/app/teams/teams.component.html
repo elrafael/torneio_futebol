@@ -2,12 +2,34 @@
 <div class="row bg-white" *ngIf="team">
   <div class="col-4">
     <h3>{{team.name}}</h3>
-    <p>{{team.tla}} {{team.shortName}}</p>
-    <img src="{{team.crestUrl}}" alt="">
+    <div class="row">
+      <div class="col-3">
+        <img src="{{team.crestUrl}}" alt="" class="img-fluid">
+      </div>
+      <div class="col-9">
+        <p>{{team.tla}} {{team.shortName}}<br />
+        Venue: {{team.venue}}<br />
+        Founded: {{team.founded}}<br />
+        Colors: {{team.clubColors}}<br />
+        {{team.website}}<br />
+        {{team.phone}}<br />
+        </p>
+      </div>
+    </div>
+
   </div>
-  <div class="col-8">
+
+  <div class="col-4">
+    <h3>Active Competitions</h3>
+    <div *ngFor="let competition of team.activeCompetitions">
+      {{competition.name}}
+    </div>
+  </div>
+
+  <div class="col-4">
+    <h3>Squad</h3>
     <div *ngFor="let player of team.squad">
-      <p>{{player.name}} - {{player.position}} - {{player.nationality}}</p>
+      {{player.name}} - {{player.position}} - {{player.nationality}}<br />
     </div>
   </div>
 </div>
