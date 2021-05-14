@@ -5,6 +5,7 @@ export interface Team {
   address: string;
   area: Area;
   clubColors: string;
+  activeCompetitions: [];
   crestUrl: string;
   email: string;
   founded: number;
