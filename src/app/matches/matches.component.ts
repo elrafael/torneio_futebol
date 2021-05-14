@@ -16,8 +16,8 @@ export class MatchesComponent implements OnInit {
 
   ngOnInit(): void {
     const match = this.activatedRoute.snapshot.paramMap.get('competition');
-    const filter = 'FINISHED';
-    // const filter = 'SCHEDULED';
+    // const filter = 'FINISHED';
+    const filter = 'SCHEDULED';
     const matches = this.matchesService.getMatches(match, filter);
     matches.subscribe( (data) => {
       this.matches = data;
