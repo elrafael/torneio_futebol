@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CompetitionsComponent } from './competitions.component';
+import { StandingsComponent } from './standings/standings.component';
 
 const routes: Routes = [
-  { path: '', component: CompetitionsComponent}
+  { path: '', component: CompetitionsComponent },
+  { path: 'standings/:id', component: StandingsComponent }
 ];
 
 @NgModule({
