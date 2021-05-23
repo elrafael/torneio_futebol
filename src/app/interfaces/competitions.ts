@@ -9,6 +9,7 @@ export interface Competitions {
   plan?: string;
   competitions?: {};
   currentSeason?: CurrentSeason;
+  lastUpdated?: string;
 }
 
 interface CurrentSeason {
