@@ -1,3 +1,4 @@
+<div class="p-3 mb-2 bg-danger text-white" *ngIf="errorMessage">{{errorMessage}}</div>
 <div *ngIf="leagues">
   <app-list [competitions]="leagues" ></app-list>
 </div>
