@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { Competitions } from '../interfaces/competitions';
+import { CompetitionsService } from '../services/competitions.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  public leagues: Competitions[];
+
+  constructor(private competitionsService: CompetitionsService) { }
 
   ngOnInit(): void {
+    this.getCompetitions();
+  }
+
+  private getCompetitions() {
+    const joined = forkJoin([
+      this.competitionsService.getByCompetition('PPL'),
+
+      this.competitionsService.getByCompetition('BSA')
+    ]);
+
+    joined.subscribe( (data: Competitions[]) => {
+      this.leagues = data;
+    }, (error) => {
+      console.log(error.error.message);
+    })
   }
 
 }
