@@ -1,2 +1,4 @@
-<p>homepage works!</p>
+<div *ngIf="leagues">
+  <app-list [competitions]="leagues" ></app-list>
+</div>
 <a routerLink="/competitions">Competições</a>

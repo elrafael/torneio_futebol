@@ -1,17 +1,3 @@
-<div class="p-3 mb-2 bg-danger text-white" *ngIf="errorMessage">{{errorMessage}}</div>
-<div class="row">
-  <div class="col-sm-12 col-lg-3" *ngFor="let league of leagues">
-    <div class="card">
-      <a routerLink="/matches/{{league.id}}"><img src="./assets/images/logos_competitions/{{league.emblemUrl}}" class="card-img-top img-fluid" alt="{{league.name}}"></a>
-      <div class="card-body">
-        <h5 class="card-title">{{league.name}}</h5>
-        <p class="card-text">
-          Start Date: {{league.currentSeason.startDate}}<br />
-          End Date: {{league.currentSeason.endDate}}
-        </p>
-        <a routerLink="/matches/{{league.id}}" class="d-block p-2 bg-primary text-white">Matches</a>
-        <a routerLink="/competitions/standings/{{league.id}}" class="d-block p-2 bg-info text-white">Standings</a>
-      </div>
-    </div>
-  </div>
+<div *ngIf="leagues">
+  <app-list [competitions]="leagues"></app-list>
 </div>
