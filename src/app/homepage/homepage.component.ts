@@ -11,6 +11,7 @@ import { CompetitionsService } from '../services/competitions.service';
 export class HomepageComponent implements OnInit {
 
   public leagues: Competitions[];
+  public errorMessage: string = '';
 
   constructor(private competitionsService: CompetitionsService) { }
 
@@ -28,7 +29,7 @@ export class HomepageComponent implements OnInit {
     joined.subscribe( (data: Competitions[]) => {
       this.leagues = data;
     }, (error) => {
-      console.log(error.error.message);
+      this.errorMessage = error.error.message;
     })
   }
 
