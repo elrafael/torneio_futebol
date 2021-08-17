@@ -1,0 +1,14 @@
+$toolBarHeight: 60px;
+.spacerBottomToolbar {
+  height: $toolBarHeight;
+}
+.bottomToolbar {
+  position: fixed;
+  bottom: 0;
+  height: $toolBarHeight;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  line-height: 20px;
+}
