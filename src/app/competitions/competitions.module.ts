@@ -6,12 +6,14 @@ import { CompetitionsComponent } from './competitions.component';
 import { DetailCompetitionComponent } from './detail-competition/detail-competition.component';
 import { MatListModule } from '@angular/material/list';
 import { MaterialModule } from '../shared/material.module';
+import { StandingsComponent } from './standings/standings.component';
 
 
 @NgModule({
   declarations: [
     CompetitionsComponent,
     DetailCompetitionComponent,
+    StandingsComponent,
   ],
   imports: [
     CommonModule,
