@@ -1,14 +1,18 @@
-$toolBarHeight: 60px;
+$toolBarHeight: 50px;
 .spacerBottomToolbar {
-  height: $toolBarHeight;
+  height: $toolBarHeight + 20;
 }
 .bottomToolbar {
   position: fixed;
   bottom: 0;
   height: $toolBarHeight;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
   font-size: 0.7rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-end;
+  padding-bottom: 5px;
   line-height: 20px;
+  border-top: 1px solid #333;
 }
