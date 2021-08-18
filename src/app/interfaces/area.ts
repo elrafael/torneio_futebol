@@ -1,6 +1,6 @@
 export interface Area {
   id: number;
   name: string;
-  countryCode: string;
+  countryCode?: string;
   ensignUrl?: any;
 }

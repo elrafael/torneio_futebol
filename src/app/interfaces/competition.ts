@@ -8,7 +8,7 @@ export interface Competition {
   code: string | null;
   emblemUrl: string;
   plan: string;
-  currentSeason: CurrentSeason;
-  numberOfAvailableSeasons: number;
+  currentSeason?: CurrentSeason;
+  numberOfAvailableSeasons?: number;
   lastUpdated: string;
 }
