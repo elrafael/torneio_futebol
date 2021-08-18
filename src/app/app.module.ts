@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CallInterceptor } from './shared/interceptors/call.interceptor';
-import { ListCompetitionsComponent } from './competitions/list-competitions/list-competitions.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from "./shared/material.module";
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor.ts';
@@ -15,8 +14,7 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor.ts';
 @NgModule({
   declarations: [
     AppComponent,
-    ListCompetitionsComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
