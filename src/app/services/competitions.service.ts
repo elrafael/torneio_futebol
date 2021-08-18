@@ -4,6 +4,7 @@ import { Competition } from '../interfaces/competition';
 import { Observable } from 'rxjs';
 import { delay, map, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Standing } from '../interfaces/standing';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,18 @@ export class CompetitionsService {
     return this.httpClient.get<Competition[]>(`competitions?id=${id}`).pipe(
       delay(1000),
       map(array => array[0])
+    );
+  }
+
+  getStandingsByCompetition(id: number): Observable<Standing[]> {
+    return this.httpClient.get<Standing[]>(`competitions/${id}/standings`).pipe(
+      map((data: any) => {
+        if (environment.production) {
+          const response = data.standings;
+          return response;
+        }
+        return data;
+      })
     );
   }
 }
