@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Standing } from 'src/app/interfaces/standing';
+import { Standing, StandingResult } from 'src/app/interfaces/standing';
 import { Table } from 'src/app/interfaces/table';
 import { CompetitionsService } from 'src/app/services/competitions.service';
 
@@ -28,9 +28,9 @@ export class StandingsComponent implements OnInit {
   }
 
   private _refreshData(competitionId: number) {
-    const response: Observable<Standing[]> = this._competitionsService.getStandingsByCompetition(competitionId)
-    response.subscribe((standing: Standing[]) => {
-      this.standings = standing[0].table;
+    const response: Observable<StandingResult> = this._competitionsService.getStandingsByCompetition(competitionId)
+    response.subscribe((standing: StandingResult) => {
+      this.standings = standing.standings[0].table;
       this.dataSource = new MatTableDataSource(this.standings)
     })
   }
