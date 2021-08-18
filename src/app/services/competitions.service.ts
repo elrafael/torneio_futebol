@@ -4,7 +4,7 @@ import { Competition } from '../interfaces/competition';
 import { Observable } from 'rxjs';
 import { delay, map, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Standing } from '../interfaces/standing';
+import { Standing, StandingResult } from '../interfaces/standing';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class CompetitionsService {
   getAll(): Observable<Competition[]> {
     return this.httpClient.get<Competition[]>('competitions?plan=TIER_ONE').pipe(
       map((data: any) => {
-        if (environment.production) {
+        if (!environment.production) {
           const response = data.competitions;
           return response;
         }
@@ -27,7 +27,7 @@ export class CompetitionsService {
   }
 
   getById(id: number): Observable<Competition> {
-    if (environment.production) {
+    if (!environment.production) {
       return this.httpClient.get<Competition>(`competitions/${id}`);
     }
     return this.httpClient.get<Competition[]>(`competitions?id=${id}`).pipe(
@@ -36,8 +36,8 @@ export class CompetitionsService {
     );
   }
 
-  getStandingsByCompetition(id: number): Observable<Standing[]> {
-    return this.httpClient.get<Standing[]>(`competitions/${id}/standings`).pipe(
+  getStandingsByCompetition(id: number): Observable<StandingResult> {
+    return this.httpClient.get<StandingResult>(`competitions/${id}/standings`).pipe(
       map((data: any) => {
         if (environment.production) {
           const response = data.standings;
