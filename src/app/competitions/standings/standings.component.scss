@@ -1,3 +1,24 @@
 table {
   width: 100%;
+  td.mat-cell {
+    font-size: 0.75rem;
+  }
+  .mat-column-position {
+    width: 100px;
+    text-align: center;
+  }
+  .mat-column-points {
+    width: 50px;
+    text-align: center;
+  }
+  .mat-column-played,
+  .mat-column-wins,
+  .mat-column-lost,
+  .mat-column-goalsFor,
+  .mat-column-goalsAgainst,
+  .mat-column-goalsDifference,
+  .mat-column-draw {
+    width: 30px;
+    text-align: center;
+  }
 }
