@@ -1,0 +1,9 @@
+<div *ngIf="(competition$ | async) as competition; else loading">
+  <mat-list role="list">
+    <mat-list-item role="listitem">{{competition.name}}</mat-list-item>
+    <mat-list-item role="listitem">{{competition.area.name}}</mat-list-item>
+  </mat-list>
+</div>
+<ng-template #loading>
+  A carregar
+</ng-template>
