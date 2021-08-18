@@ -9,6 +9,7 @@ import { CallInterceptor } from './shared/interceptors/call.interceptor';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from "./shared/material.module";
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor.ts';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor.ts';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CallInterceptor, multi: true },
