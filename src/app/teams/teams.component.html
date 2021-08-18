@@ -1,0 +1,25 @@
+<div *ngIf="team$ | async let team" fxLayout="row" fxLayoutGap="12px" [style.margin-top]="'12px'">
+  <mat-card fxFlex="50%">
+    <mat-card-header>
+      <mat-card-title>{{team.name}}</mat-card-title>
+      <mat-card-subtitle>{{team.shortName}} - {{team.tla}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati unde praesentium laudantium vero vel! Nihil voluptatum quaerat sapiente recusandae inventore ipsam. Excepturi nisi aspernatur commodi maiores obcaecati cum facilis hic!
+    </mat-card-content>
+  </mat-card>
+
+  <mat-list fxFlex="25%">
+    <div mat-subheader>Active Competitions</div>
+    <mat-list-item *ngFor="let comp of team.activeCompetitions">
+      {{comp.name}} {{comp.id}}
+    </mat-list-item>
+  </mat-list>
+
+  <mat-list fxFlex="25%">
+    <div mat-subheader>Squad</div>
+    <mat-list-item *ngFor="let squad of team.squad">
+      ({{squad.shirtNumber}}) {{squad.name}} {{squad.position}}
+    </mat-list-item>
+  </mat-list>
+</div>
